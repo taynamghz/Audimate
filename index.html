@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audimate - Audition Filtering System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Audimate</h1>
+            <p class="subtitle">Audition Filtering System</p>
+        </header>
+
+        <main>
+            <!-- Profile Builder Page -->
+            <section id="profile-builder" class="page active">
+                <div class="section">
+                    <h2>Build Your Ideal Profile</h2>
+                    <div class="categories">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="saveProfile" class="primary-button">Save Profile</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Review Page -->
+            <section id="profile-review" class="page">
+                <div class="section">
+                    <h2>Review Your Ideal Profile</h2>
+                    <div id="profileSummary" class="profile-summary">
+                        <!-- Profile summary will be populated by JavaScript -->
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="editProfile" class="secondary-button">Edit Profile</button>
+                        <button id="confirmProfile" class="primary-button">Confirm Profile</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Upload Page -->
+            <section id="video-upload" class="page">
+                <div class="section">
+                    <h2>Upload Audition Videos</h2>
+                    <div class="upload-area">
+                        <div class="drop-zone" id="dropZone">
+                            <p>Drag and drop videos here</p>
+                            <p>or</p>
+                            <button class="upload-btn">Browse Files</button>
+                            <input type="file" id="fileInput" multiple accept="video/*" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="uploaded-videos" id="uploadedVideos">
+                        <!-- Uploaded videos will be displayed here -->
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="startAnalysis" class="primary-button" disabled>Start Analysis</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Processing Page -->
+            <section id="processing" class="page">
+                <div class="section">
+                    <h2>Analyzing Videos</h2>
+                    <div class="processing-content">
+                        <div class="spinner"></div>
+                        <p>Processing your videos...</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress" id="processingProgress"></div>
+                            </div>
+                            <span id="progressText">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Page -->
+            <section id="analysis-results" class="page">
+                <div class="section">
+                    <h2>Analysis Results</h2>
+                    <div class="results-container" id="resultsContainer">
+                        <!-- Results will be displayed here -->
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="newAnalysis" class="secondary-button">Start New Analysis</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
