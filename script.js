@@ -1,38 +1,38 @@
 // Profile data structure
 const profileData = {
-    facialAnalysis: {
-        ageGroup: ['Child', 'Teen', 'YoungAdult', 'MiddleAged', 'Senior'],
-        faceShape: ['Oval', 'Round', 'Square', 'Heart', 'Diamond'],
-        symmetryLevel: ['HighSymmetry', 'ModerateSymmetry', 'LowSymmetry'],
-        featureProminence: ['HighCheekbones', 'StrongJawline', 'SoftJawline', 'PronouncedBrow'],
-        skinTone: ['Fair', 'Medium', 'Olive', 'Brown', 'Dark']
+    FacialAnalysis: {
+        AgeGroup: ['Child', 'Teen', 'YoungAdult', 'MiddleAged', 'Senior'],
+        FaceShape: ['Oval', 'Round', 'Square', 'Heart', 'Diamond'],
+        SymmetryLevel: ['HighSymmetry', 'ModerateSymmetry', 'LowSymmetry'],
+        FeatureProminence: ['HighCheekbones', 'StrongJawline', 'SoftJawline', 'PronouncedBrow'],
+        SkinTone: ['Fair', 'Medium', 'Olive', 'Brown', 'Dark']
     },
-    emotionRecognition: {
-        basicEmotion: ['Happiness', 'Sadness', 'Anger', 'Fear', 'Surprise', 'Disgust', 'Neutral'],
-        compoundEmotion: ['Contempt', 'Embarrassment', 'Awe', 'Amusement'],
-        intensity: ['Subtle', 'Moderate', 'Intense'],
-        temporalPattern: ['Flash', 'Sustained', 'Evolving']
+    EmotionRecognition: {
+        BasicEmotion: ['Happiness', 'Sadness', 'Anger', 'Fear', 'Surprise', 'Disgust', 'Neutral'],
+        CompoundEmotion: ['Contempt', 'Embarrassment', 'Awe', 'Amusement'],
+        Intensity: ['Subtle', 'Moderate', 'Intense'],
+        TemporalPattern: ['Flash', 'Sustained', 'Evolving']
     },
-    voiceProfile: {
-        toneType: ['SoftSpoken', 'Commanding', 'Warm', 'Stern', 'Breathless'],
-        pitchRange: ['Low', 'Mid', 'High'],
-        rhythmPattern: ['Steady', 'Erratic', 'Hesitant', 'Staccato'],
-        volumeLevel: ['Whisper', 'Conversational', 'Projected', 'Shouted'],
-        timbreQuality: ['Bright', 'Dark', 'Nasal', 'Resonant']
+    VoiceProfile: {
+        ToneType: ['SoftSpoken', 'Commanding', 'Warm', 'Stern', 'Breathless'],
+        PitchRange: ['Low', 'Mid', 'High'],
+        RhythmPattern: ['Steady', 'Erratic', 'Hesitant', 'Staccato'],
+        VolumeLevel: ['Whisper', 'Conversational', 'Projected', 'Shouted'],
+        TimbreQuality: ['Bright', 'Dark', 'Nasal', 'Resonant']
     },
-    visualTags: {
-        apparentAgeStyle: ['Youthful', 'Mature', 'Aged'],
-        wardrobeTag: ['Casual', 'Formal', 'Period — Historical', 'Futuristic'],
-        styling: ['Minimalist', 'Dramatic', 'Bohemian', 'Edgy'],
-        grooming: ['Clean‑shaven', 'Beard', 'Stubble', 'NaturalHair', 'StyledHair'],
-        accessoryPresence: ['Glasses', 'Hat', 'Jewelry', 'Props']
+    VisualTags: {
+        ApparentAgeStyle: ['Youthful', 'Mature', 'Aged'],
+        WardrobeTag: ['Casual', 'Formal', 'Period — Historical', 'Futuristic'],
+        Styling: ['Minimalist', 'Dramatic', 'Bohemian', 'Edgy'],
+        Grooming: ['Clean‑shaven', 'Beard', 'Stubble', 'NaturalHair', 'StyledHair'],
+        AccessoryPresence: ['Glasses', 'Hat', 'Jewelry', 'Props']
     },
-    bodyLanguage: {
-        postureType: ['Upright', 'Slouched', 'LeaningForward', 'OpenChest'],
-        gestureStyle: ['OpenGestures', 'ClosedGestures', 'EmphaticGestures'],
-        movementEnergy: ['Energetic', 'Reserved', 'Fluid'],
-        spatialUse: ['Centered', 'WideStance', 'ShiftingWeight'],
-        eyeContactPattern: ['Direct', 'Averted', 'Flickering', 'Steady']
+    BodyLanguage: {
+        PostureType: ['Upright', 'Slouched', 'LeaningForward', 'OpenChest'],
+        GestureStyle: ['OpenGestures', 'ClosedGestures', 'EmphaticGestures'],
+        MovementEnergy: ['Energetic', 'Reserved', 'Fluid'],
+        SpatialUse: ['Centered', 'WideStance', 'ShiftingWeight'],
+        EyeContactPattern: ['Direct', 'Averted', 'Flickering', 'Steady']
     }
 };
 
