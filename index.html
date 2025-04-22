@@ -17,10 +17,30 @@
         </header>
 
         <main>
-            <!-- Profile Builder Page -->
-            <section id="profile-builder" class="page active">
+            <!-- Script Upload Page -->
+            <section id="script-upload" class="page active">
                 <div class="section">
-                    <h2>Build Your Ideal Profile</h2>
+                    <h2>Upload Your Script</h2>
+                    <div class="upload-area">
+                        <div class="drop-zone" id="scriptDropZone">
+                            <p>Drag and drop your script here</p>
+                            <p>or</p>
+                            <button class="upload-btn">Browse Files</button>
+                            <input type="file" id="scriptInput" accept=".txt,.pdf,.docx" style="display: none;">
+                        </div>
+                        <p class="file-types">Supported formats: .txt, .pdf, .docx</p>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button id="analyzeScript" class="primary-button" disabled>Analyze Script</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Builder Page -->
+            <section id="profile-builder" class="page">
+                <div class="section">
+                    <h2>Review & Edit Your Profile</h2>
+                    <p class="subtitle">Based on your script analysis, we've pre-selected the ideal characteristics. Feel free to adjust them as needed.</p>
                     <div class="categories">
                         <!-- Categories will be populated by JavaScript -->
                     </div>

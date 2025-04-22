@@ -44,7 +44,7 @@ let uploadedVideos = [];
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
-    buildProfileUI();
+    setupScriptUpload();
     setupFileUpload();
     setupNavigation();
 });
@@ -76,9 +76,32 @@ function setupNavigation() {
     });
 
     newAnalysisBtn.addEventListener('click', () => {
-        showPage('profile-builder');
+        // Reset all state
         selectedProfile = {};
-        buildProfileUI();
+        uploadedVideos = [];
+        
+        // Clear the uploaded videos container
+        const uploadedVideosContainer = document.getElementById('uploadedVideos');
+        uploadedVideosContainer.innerHTML = '';
+        
+        // Reset the script upload area
+        const scriptDropZone = document.getElementById('scriptDropZone');
+        scriptDropZone.innerHTML = `
+            <p>Drag and drop your script here</p>
+            <p>or</p>
+            <button class="upload-btn">Browse Files</button>
+            <input type="file" id="scriptInput" accept=".txt,.pdf,.docx" style="display: none;">
+        `;
+        
+        // Reset the analyze button
+        const analyzeScriptBtn = document.getElementById('analyzeScript');
+        analyzeScriptBtn.disabled = true;
+        
+        // Show the script upload page
+        showPage('script-upload');
+        
+        // Reinitialize the script upload functionality
+        setupScriptUpload();
     });
 }
 
@@ -88,6 +111,125 @@ function showPage(pageId) {
         page.classList.remove('active');
     });
     document.getElementById(pageId).classList.add('active');
+}
+
+// Setup script upload functionality
+function setupScriptUpload() {
+    const scriptDropZone = document.getElementById('scriptDropZone');
+    const scriptInput = document.getElementById('scriptInput');
+    const analyzeScriptBtn = document.getElementById('analyzeScript');
+    const uploadBtn = scriptDropZone.querySelector('.upload-btn');
+    
+    // Handle drag and drop
+    scriptDropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        scriptDropZone.classList.add('dragover');
+    });
+    
+    scriptDropZone.addEventListener('dragleave', () => {
+        scriptDropZone.classList.remove('dragover');
+    });
+    
+    scriptDropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        scriptDropZone.classList.remove('dragover');
+        handleScriptFile(e.dataTransfer.files[0]);
+    });
+    
+    // Handle button click
+    uploadBtn.addEventListener('click', () => {
+        scriptInput.click();
+    });
+    
+    scriptInput.addEventListener('change', () => {
+        if (scriptInput.files.length > 0) {
+            handleScriptFile(scriptInput.files[0]);
+        }
+    });
+}
+
+// Handle script file upload
+function handleScriptFile(file) {
+    const analyzeScriptBtn = document.getElementById('analyzeScript');
+    const scriptDropZone = document.getElementById('scriptDropZone');
+    const scriptInput = document.getElementById('scriptInput');
+    
+    if (file && (file.type === 'text/plain' || 
+                 file.type === 'application/pdf' || 
+                 file.name.endsWith('.docx'))) {
+        // For demo purposes, we'll simulate script analysis
+        scriptDropZone.innerHTML = `
+            <p>Script uploaded: ${file.name}</p>
+            <p>Click "Analyze Script" to continue</p>
+        `;
+        
+        // Enable the analyze button
+        analyzeScriptBtn.disabled = false;
+        
+        // Clear the file input to prevent multiple uploads
+        scriptInput.value = '';
+        
+        // Store the file for analysis
+        analyzeScriptBtn.onclick = () => {
+            analyzeScript(file);
+        };
+    } else {
+        alert('Please upload a valid script file (.txt, .pdf, or .docx)');
+        // Clear the file input if invalid file type
+        scriptInput.value = '';
+    }
+}
+
+// Analyze script and pre-select profile options
+function analyzeScript(file) {
+    // For demo purposes, we'll simulate script analysis
+    // In a real implementation, this would use NLP to analyze the script
+    
+    // Reset selected profile
+    selectedProfile = {};
+    
+    // Simulate script analysis results
+    // These would be determined by actual script analysis in a real implementation
+    selectedProfile = {
+        FacialAnalysis: {
+            AgeGroup: 'YoungAdult',
+            FaceShape: 'Oval',
+            SymmetryLevel: 'HighSymmetry',
+            FeatureProminence: 'HighCheekbones',
+            SkinTone: 'Medium'
+        },
+        EmotionRecognition: {
+            BasicEmotion: 'Happiness',
+            CompoundEmotion: 'Amusement',
+            Intensity: 'Moderate',
+            TemporalPattern: 'Sustained'
+        },
+        VoiceProfile: {
+            ToneType: 'Warm',
+            PitchRange: 'Mid',
+            RhythmPattern: 'Steady',
+            VolumeLevel: 'Conversational',
+            TimbreQuality: 'Resonant'
+        },
+        VisualTags: {
+            ApparentAgeStyle: 'Youthful',
+            WardrobeTag: 'Casual',
+            Styling: 'Minimalist',
+            Grooming: 'Clean‑shaven',
+            AccessoryPresence: 'None'
+        },
+        BodyLanguage: {
+            PostureType: 'Upright',
+            GestureStyle: 'OpenGestures',
+            MovementEnergy: 'Fluid',
+            SpatialUse: 'Centered',
+            EyeContactPattern: 'Direct'
+        }
+    };
+    
+    // Move to profile builder page
+    showPage('profile-builder');
+    buildProfileUI();
 }
 
 // Build the profile UI
@@ -169,7 +311,7 @@ function buildProfileSummary() {
 function setupFileUpload() {
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
-    const uploadBtn = document.querySelector('.upload-btn');
+    const uploadBtn = dropZone.querySelector('.upload-btn');
     const startAnalysisBtn = document.getElementById('startAnalysis');
     
     // Handle drag and drop
@@ -194,7 +336,9 @@ function setupFileUpload() {
     });
     
     fileInput.addEventListener('change', () => {
-        handleFiles(fileInput.files);
+        if (fileInput.files.length > 0) {
+            handleFiles(fileInput.files);
+        }
     });
 
     // Enable start analysis button when files are uploaded
@@ -225,6 +369,10 @@ function handleFiles(files) {
             uploadedVideos.push(file.name);
         }
     });
+    
+    // Clear the file input after handling
+    const fileInput = document.getElementById('fileInput');
+    fileInput.value = '';
 }
 
 // Simulate processing
